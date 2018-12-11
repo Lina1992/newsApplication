@@ -24,7 +24,7 @@
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
     self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     self.progressView.frame=CGRectMake(0, self.navigationController.navigationBar.frame.size.height+self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.progressView.frame.size.height);
-    NSLog(@"self.progressView.frame=%@",NSStringFromCGRect(self.progressView.frame));
+  //  NSLog(@"self.progressView.frame=%@",NSStringFromCGRect(self.progressView.frame));
     [self.webView addSubview:self.progressView];
     
     [self.webView  loadRequest:request];
@@ -36,7 +36,7 @@
 }
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(estimatedProgress))] && object == self.webView) {
-        NSLog(@"self.webView.estimatedProgress=%f",self.webView.estimatedProgress);
+       // NSLog(@"self.webView.estimatedProgress=%f",self.webView.estimatedProgress);
         [self.progressView setAlpha:1.0f];
         [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
         
